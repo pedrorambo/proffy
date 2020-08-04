@@ -20,31 +20,42 @@ routes.post("/classes", async (request, response) => {
         cost, 
         schedule} = request.body;
 
-    const [user_id] = await db('users').insert({
-        name,
-        avatar,
-        whatsapp,
-        bio        
-    })
+    const trx = await db.transaction();
 
-    const [class_id] = await db('classes').insert({
-        subject,
-        cost,
-        user_id,
-    })
+    try{
+        const [user_id] = await trx('users').insert({
+            name,
+            avatar,
+            whatsapp,
+            bio        
+        })
+    
+        const [class_id] = await trx('classes').insert({
+            subject,
+            cost,
+            user_id,
+        })
+    
+        const transformedClassSchedule = schedule.map((scheduleItem: ScheduleItem) => {
+            return {
+                week_day: scheduleItem.week_day,
+                from: convertHoursToMinutes(scheduleItem.from),
+                to: convertHoursToMinutes(scheduleItem.to),
+                class_id
+            }
+        });
+    
+        await trx('class_schedule').insert(transformedClassSchedule);
+    
+        await trx.commit();
 
-    const transformedClassSchedule = schedule.map((scheduleItem: ScheduleItem) => {
-        return {
-            week_day: scheduleItem.week_day,
-            from: convertHoursToMinutes(scheduleItem.from),
-            to: convertHoursToMinutes(scheduleItem.to),
-            class_id
-        }
-    });
-
-    await db('class_schedule').insert(transformedClassSchedule);
-
-    return response.send();
+        return response.status(201).send();
+    }catch(err){
+        trx.rollback();
+        return response.status(400).json({
+            error: 'Unexpedted error while creating new class'
+        })
+    }
 });
 
 export default routes;
