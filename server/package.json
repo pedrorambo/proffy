@@ -1,0 +1,20 @@
+{
+  "name": "proffy",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvido na Next Level Week 2 da Rocketseat",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsnd --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "ts-node-dev": "^1.0.0-pre.56",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
