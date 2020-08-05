@@ -22,7 +22,7 @@
 
 .hero-image{
     width: 100%;
-    max-width: 420px;
+    max-height: 40vh;
 }
 
 .logo-container{
@@ -47,7 +47,7 @@
     border-radius: 0.8rem;
     font: 700 1.8rem Archivo;
     
-    width: 80vw;
+    width: 90vw;
     max-width: 420px;
 
     display: flex;
@@ -128,7 +128,7 @@
     }
 
     .hero-image{
-        max-width: none;
+        max-height: none;
         grid-area: hero;
         justify-self: end;
     }
