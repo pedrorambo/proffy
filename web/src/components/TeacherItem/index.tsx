@@ -4,31 +4,43 @@ import "./styles.css";
 
 import whatsappIcon from "../../assets/images/icons/whatsapp.svg";
 
-function TeacherItem() {
+export interface Teacher{
+    id: number;
+    avatar: string;
+    bio: string;
+    cost: number
+    name: string
+    subject: string
+    whatsapp: string
+};
+
+interface TeacherItemProps {
+    teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
+    const {avatar, bio, cost, name, subject, whatsapp} = teacher;
+
     return (
         <article className="teacher-item">
             <header>
                 <img
-                    src="https://avatars2.githubusercontent.com/u/32118136?s=460&u=80b5c10713502a15735eb1f43f96567414a0dd13&v=4"
-                    alt="Pedro Rambo"
+                    src={avatar}
+                    alt={name}
                 />
                 <div>
-                    <strong>Pedro Rambo</strong>
-                    <span>Química</span>
+                    <strong>{name}</strong>
+                    <span>{subject}</span>
                 </div>
             </header>
             <p>
-                Também conhecido como "Mestre da Química", Pedro sempre
-                surpreende com seus experimentos explosivos.
-                <br />
-                <br />
-                Possui sala de aula, mas também atende em sua casa.
+                {bio}
             </p>
 
             <footer>
                 <p>
                     Preço/hora
-                    <strong>R$80,00</strong>
+                    <strong>R$ {cost}</strong>
                 </p>
                 <button type="button">
                     <img src={whatsappIcon} alt="Whatsapp" />
