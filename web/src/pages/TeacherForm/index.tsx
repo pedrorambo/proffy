@@ -4,9 +4,10 @@ import PageHeader from "../../components/PageHeader";
 import Input from "../../components/Input";
 import TextArea from "../../components/TextArea";
 
-import warningIcon from '../../assets/images/icons/warning.svg';
+import warningIcon from "../../assets/images/icons/warning.svg";
 
-import './styles.css';
+import "./styles.css";
+import Select from "../../components/Select";
 
 function TeacherForm() {
     return (
@@ -20,28 +21,41 @@ function TeacherForm() {
                 <fieldset>
                     <legend>Seus dados</legend>
 
-                    <Input name="name" label="Nome completo"/>
-                    <Input name="avatar" label="Avatar"/>
-                    <Input name="whatsapp" label="Whatsapp"/>
+                    <Input name="name" label="Nome completo" />
+                    <Input name="avatar" label="Avatar" />
+                    <Input name="whatsapp" label="Whatsapp" />
                 </fieldset>
-                
+
                 <fieldset>
                     <legend>Sobre a aula</legend>
 
-                    <Input name="subject" label="Matéria"/>
-                    <Input name="cost" label="Curso da sua hora por aula"/>
-                    <TextArea name="bio" label="Biografia"/>
+                    <Select
+                        name="subject"
+                        label="Matéria"
+                        options={[
+                            { value: "Artes", label: "Artes" },
+                            { value: "Educação Física", label: "Educação Física" },
+                            { value: "Biologia", label: "Biologia" },
+                            { value: "Física", label: "Física" },
+                            { value: "Química", label: "Química" },
+                            { value: "Matemática", label: "Matemática" },
+                            { value: "Português", label: "Português" },
+                            { value: "Literatura", label: "Literatura" },
+                            { value: "Geografia", label: "Geografia" },
+                            { value: "História", label: "História" },
+                        ]}
+                    />
+                    <Input name="cost" label="Curso da sua hora por aula" />
+                    <TextArea name="bio" label="Biografia" />
                 </fieldset>
 
                 <footer>
                     <p>
-                        <img src={warningIcon} alt="Aviso importante"/>
-                        Importante! <br/>
+                        <img src={warningIcon} alt="Aviso importante" />
+                        Importante! <br />
                         Preencha todos os dados
                     </p>
-                    <button type="button">
-                        Salvar cadastro
-                    </button>
+                    <button type="button">Salvar cadastro</button>
                 </footer>
             </main>
         </div>
