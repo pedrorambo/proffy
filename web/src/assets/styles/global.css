@@ -29,18 +29,18 @@
     box-sizing: border-box;
 }
 
-html, body, #root{
-    height: 100vh;
-}
-
 body{
     background: var(--color-background);
 }
 
 #root{
+    background: tomato;
     display: flex;
-    align-items: center;
     justify-content: center;
+}
+
+.app{
+    width: 100vh;
 }
 
 /* Elements */
