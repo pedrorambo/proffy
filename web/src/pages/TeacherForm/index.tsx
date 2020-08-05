@@ -3,14 +3,18 @@ import React, { useState, FormEvent } from "react";
 import PageHeader from "../../components/PageHeader";
 import Input from "../../components/Input";
 import TextArea from "../../components/TextArea";
+import Select from "../../components/Select";
 
 import warningIcon from "../../assets/images/icons/warning.svg";
 
 import "./styles.css";
-import Select from "../../components/Select";
+
 import api from "../../services/api";
+import { useHistory } from "react-router";
 
 function TeacherForm() {
+    const history = useHistory();
+
     const [scheduleItems, setScheduleItems] = useState([
         { week_day: 0, from: "", to: "" },
     ]);
@@ -50,14 +54,17 @@ function TeacherForm() {
             whatsapp,
             bio,
             subject,
-            
+
             cost: Number(cost),
             schedule: scheduleItems,
-        }).then(() => {
-            alert("Cadastrado com sucesso");
-        }).catch(() => {
-            alert("Erro no cadastro");
         })
+            .then(() => {
+                alert("Cadastrado com sucesso");
+                history.push("/");
+            })
+            .catch(() => {
+                alert("Erro no cadastro");
+            });
 
         console.log({
             name,
