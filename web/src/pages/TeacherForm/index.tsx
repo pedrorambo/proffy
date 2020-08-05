@@ -2,6 +2,7 @@ import React from "react";
 
 import PageHeader from "../../components/PageHeader";
 import Input from "../../components/Input";
+import TextArea from "../../components/TextArea";
 
 import warningIcon from '../../assets/images/icons/warning.svg';
 
@@ -29,7 +30,7 @@ function TeacherForm() {
 
                     <Input name="subject" label="Matéria"/>
                     <Input name="cost" label="Curso da sua hora por aula"/>
-                    <Input name="whatsapp" label="Whatsapp"/>
+                    <TextArea name="bio" label="Biografia"/>
                 </fieldset>
 
                 <footer>
