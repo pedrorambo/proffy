@@ -34,7 +34,10 @@ function TeacherForm() {
                         label="Matéria"
                         options={[
                             { value: "Artes", label: "Artes" },
-                            { value: "Educação Física", label: "Educação Física" },
+                            {
+                                value: "Educação Física",
+                                label: "Educação Física",
+                            },
                             { value: "Biologia", label: "Biologia" },
                             { value: "Física", label: "Física" },
                             { value: "Química", label: "Química" },
@@ -47,6 +50,34 @@ function TeacherForm() {
                     />
                     <Input name="cost" label="Curso da sua hora por aula" />
                     <TextArea name="bio" label="Biografia" />
+                </fieldset>
+
+                <fieldset>
+                    <legend>
+                        Horários disponíveis
+                        <button type="button">
+                            + Novo horário
+                        </button>
+                    </legend>
+
+                    <div className="schedule-item">
+                        <Select
+                            name="week_day"
+                            label="Dia"
+                            options={[
+                                { value: "0", label: "Domingo" },
+                                { value: "1", label: "Segunda" },
+                                { value: "2", label: "Terça" },
+                                { value: "3", label: "Quarta" },
+                                { value: "4", label: "Quinta" },
+                                { value: "5", label: "Sexta" },
+                                { value: "6", label: "Sábado" },
+                            ]}
+                        />
+
+                        <Input name="from" label="Das" type="time"/> 
+                        <Input name="to" label="Até" type="time"/> 
+                    </div>
                 </fieldset>
 
                 <footer>
