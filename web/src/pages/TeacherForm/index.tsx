@@ -6,6 +6,7 @@ import TextArea from "../../components/TextArea";
 import Select from "../../components/Select";
 
 import warningIcon from "../../assets/images/icons/warning.svg";
+import {FaRegTrashAlt} from 'react-icons/fa';
 
 import "./styles.css";
 
@@ -34,6 +35,13 @@ function TeacherForm() {
             }
         );
 
+        setScheduleItems(updatedScheduleItems);
+    }
+
+    function handleDeleteScheduleItem(e: FormEvent, indexToDelete: number){
+        e.preventDefault();
+
+        const updatedScheduleItems = scheduleItems.filter((scheduleItem, index) => index !== indexToDelete);
         setScheduleItems(updatedScheduleItems);
     }
 
@@ -162,7 +170,7 @@ function TeacherForm() {
                         {scheduleItems.map((scheduleItem, index) => {
                             return (
                                 <div
-                                    key={scheduleItem.week_day}
+                                    key={index}
                                     className="schedule-item"
                                 >
                                     <Select
@@ -214,6 +222,10 @@ function TeacherForm() {
                                             )
                                         }
                                     />
+
+                                    <button disabled={index === 0} onClick={(e) => handleDeleteScheduleItem(e, index)}>
+                                        <FaRegTrashAlt />
+                                    </button>
                                 </div>
                             );
                         })}
