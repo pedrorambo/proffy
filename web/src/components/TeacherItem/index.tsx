@@ -4,6 +4,7 @@ import "./styles.css";
 
 import whatsappIcon from "../../assets/images/icons/whatsapp.svg";
 import api from "../../services/api";
+import ScheduleList from "../ScheduleList";
 
 export interface Teacher{
     id: number;
@@ -44,6 +45,8 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
             <p>
                 {bio}
             </p>
+
+            <ScheduleList/>
 
             <footer>
                 <p>
