@@ -8,33 +8,46 @@ import heartOutlineIcon from '../../assets/images/icons/heart-outline.png';
 import unfavoriteIcon from '../../assets/images/icons/unfavorite.png';
 import whatsAppIcon from "../../assets/images/icons/whatsapp.png";
 
-function TeacherItem(){
+export interface Teacher{
+    id: number;
+    avatar: string;
+    bio: string;
+    cost: number
+    name: string
+    subject: string
+    whatsapp: string
+};
+
+interface TeacherItemProps{
+    teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
+
+    const {avatar, name, bio, cost, subject, whatsapp} = teacher;
+
     return (
         <View style={styles.container}>
             <View style={styles.profile}>
                 <Image 
                     style={styles.avatar}
-                    source={{uri: "https://avatars3.githubusercontent.com/u/32118136?v=4"}}
+                    source={{uri: avatar}}
                 />
 
                 <View style={styles.profileInfo}>
-                    <Text style={styles.name}>Pedro Rambo</Text>
-                    <Text style={styles.subject}>Física</Text>
+                    <Text style={styles.name}>{name}</Text>
+                    <Text style={styles.subject}>{subject}</Text>
                 </View>
 
             </View>
 
-            <Text style={styles.bio}>
-                Biografia de testes testes teste
-                {"\n"}
-                Teste teste teste steawud ahdwui
-            </Text>
+            <Text style={styles.bio}>{bio}</Text>
 
             <View style={styles.footer}>
                 <Text style={styles.price}>
                     Preço/hora {"   "}
                     <Text style={styles.priceValue}>
-                        R$ 120,00
+                        R$ {cost}
                     </Text>
                 </Text>
 
