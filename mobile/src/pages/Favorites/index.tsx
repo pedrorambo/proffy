@@ -1,28 +1,46 @@
-import React from 'react'
-import { View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import React, { useState, useEffect } from "react";
+import { View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-community/async-storage";
 
-import styles from './styles';
+import styles from "./styles";
 
-import TeacherItem from '../../components/TeacherItem/indes';
-import PageHeader from '../../components/PageHeader';
+import TeacherItem, { Teacher } from "../../components/TeacherItem/indes";
+import PageHeader from "../../components/PageHeader";
+import { useFocusEffect } from "@react-navigation/native";
 
-function Favorites(){
-    return(
+function Favorites() {
+    const [favoritedTeachers, setFavoritedTeachers] = useState([]);
+
+    function loadFavorites() {
+        AsyncStorage.getItem("favorites").then((response) => {
+            if (response) {
+                const teachers = JSON.parse(response);
+                setFavoritedTeachers(teachers);
+            }
+        });
+    }
+
+    useFocusEffect(() => {
+        loadFavorites();
+    });
+
+    return (
         <View style={styles.container}>
             <PageHeader title="Meus proffys favoritos"></PageHeader>
 
-            <ScrollView 
+            <ScrollView
                 style={styles.teacherList}
                 contentContainerStyle={{
                     paddingHorizontal: 16,
-                    paddingBottom: 16, 
+                    paddingBottom: 16,
                 }}
             >
-                <TeacherItem />
-                <TeacherItem />
-                <TeacherItem />
-                <TeacherItem />
+
+                {
+                    favoritedTeachers.map((teacher: Teacher) => 
+                        <TeacherItem key={teacher.id} teacher={teacher} favorited />)
+                }
             </ScrollView>
         </View>
     );

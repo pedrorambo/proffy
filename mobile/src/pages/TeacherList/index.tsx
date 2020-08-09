@@ -15,6 +15,7 @@ import styles from "./styles";
 import PageHeader from "../../components/PageHeader";
 import TeacherItem, { Teacher } from "../../components/TeacherItem/indes";
 import api from "../../services/api";
+import { useFocusEffect } from "@react-navigation/native";
 
 function TeacherList() {
     const [isFiltersVisible, setIsFiltersVisible] = useState(true);
@@ -56,6 +57,10 @@ function TeacherList() {
         })
     }
 
+    useFocusEffect(() => {
+        loadFavorites();
+    });
+    
     return (
         <View style={styles.container}>
             <PageHeader
