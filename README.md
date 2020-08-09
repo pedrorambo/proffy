@@ -2,7 +2,7 @@
 Projeto desenvolvido na **Next Level Week 2** da [Rocketseat](https://github.com/Rocketseat)
 
 ## Instrodução
-Durante a jornada de uma semana - concluída em 08/09/2020 - foi solicitado o desenvolvimento da aplicação web e mobile "Proffy", uma plataforma que permite aos professores o cadastramento de aulas, e aos alunos o agendamento por WhatsApp. Para isso, foram utilizadas tecnologias como React, React Native e NodeJS. Como desafio, foi sugerido o desenvolvimento da versão 2.0, cujas funcionalidades estão descritas abaixo na sessão "Versão web 2.0".
+Durante a jornada de uma semana - concluída em 09/08/2020 - foi solicitado o desenvolvimento da aplicação web e mobile "Proffy", uma plataforma que permite aos professores o cadastramento de aulas, e aos alunos o agendamento por WhatsApp. Para isso, foram utilizadas tecnologias como React, React Native e NodeJS. Como desafio, foi sugerido o desenvolvimento da versão 2.0, cujas funcionalidades estão descritas abaixo na sessão "Versão web 2.0".
 
 ## Tecnologias
 * Back-end: **API RESTful** com rotas geridas pelo [Express](http://expressjs.com/) e banco de dados **SQLite**, utilizando migrations com o [Knex.js](http://knexjs.org/) 
