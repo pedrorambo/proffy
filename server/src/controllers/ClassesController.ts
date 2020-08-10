@@ -57,7 +57,7 @@ export default class ClassesController {
             avatar: "avatar",
             whatsapp: "whatsapp",
             bio: "bio",
-            schedule: [{
+            schedules: [{
                 week_day: 'schedule_week_day',
                 from: 'schedule_from',
                 to: 'schedule_to',
