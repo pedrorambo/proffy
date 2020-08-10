@@ -1,4 +1,6 @@
 import {Request, Response} from 'express';
+const NestHydrationJS = require('nesthydrationjs')();
+
 import convertHoursToMinutes from "../utils/convertHoursToMinutes";
 import db from "../database/connection";
 
@@ -36,10 +38,35 @@ export default class ClassesController {
             })
             .where('classes.subject', '=', subject)
             .join('users', 'classes.user_id', '=', 'users.id')
-            .select(['classes.*', 'users.*']);
+            .join('class_schedule', 'class_schedule.class_id', '=', 'classes.id')
+            .options({nestTables: true})
+            .select([
+                'classes.*', 
+                'users.*',
+                'class_schedule.week_day AS schedule_week_day',
+                'class_schedule.from AS schedule_from',
+                'class_schedule.to AS schedule_to',
+        ]);
 
 
-        return response.json(classes);
+        const nestHydrationDefinition = [{
+            id: "id",
+            subject: "subject",
+            cost: "cost",
+            name: "name",
+            avatar: "avatar",
+            whatsapp: "whatsapp",
+            bio: "bio",
+            schedule: [{
+                week_day: 'schedule_week_day',
+                from: 'schedule_from',
+                to: 'schedule_to',
+            }]
+        }]
+
+        const nestedClasses = NestHydrationJS.nest(classes, nestHydrationDefinition);
+
+        return response.json(nestedClasses);
     }
 
     async create(request: Request, response: Response) {
