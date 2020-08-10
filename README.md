@@ -27,7 +27,7 @@ Durante a jornada de uma semana - concluída em 09/08/2020 - foi solicitado o de
 - [ ] Redefinir senha
 - [ ] Upload foto de perfil
 - [ ] Total de professores
-- [ ] Horários disponíveis
+- [x] Horários disponíveis
 - [ ] Infinite Scroll
 - [ ] Perfil do usuário
 
