@@ -1,19 +1,19 @@
 import React from "react";
-
-import "./styles.css";
-
-import whatsappIcon from "../../assets/images/icons/whatsapp.svg";
 import api from "../../services/api";
 import ScheduleList from "../ScheduleList";
+
+import "./styles.css";
+import whatsappIcon from "../../assets/images/icons/whatsapp.svg";
 
 export interface Teacher{
     id: number;
     avatar: string;
     bio: string;
-    cost: number
-    name: string
-    subject: string
-    whatsapp: string
+    cost: number;
+    name: string;
+    subject: string;
+    whatsapp: string;
+    schedules: [];
 };
 
 interface TeacherItemProps {
@@ -21,8 +21,7 @@ interface TeacherItemProps {
 }
 
 const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
-    const {id, avatar, bio, cost, name, subject, whatsapp} = teacher;
-
+    const {id, avatar, bio, cost, name, subject, whatsapp, schedules} = teacher;
 
     function createNewConnection(){
         api.post("connections", {
@@ -46,7 +45,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
                 {bio}
             </p>
 
-            <ScheduleList/>
+            <ScheduleList schedules={schedules}/>
 
             <footer>
                 <p>
