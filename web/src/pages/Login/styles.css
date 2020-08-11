@@ -1,0 +1,78 @@
+#page-login {
+    width: 100vw;
+}
+
+#page-login .banner{
+    background-color: var(--color-primary-dark);
+    padding: 2rem 2.4rem;
+}
+
+#page-login .banner img{
+    width: 100%;
+}
+
+#page-login .banner .text{
+    max-width: 240px;
+}
+
+#page-login .banner span{
+    font: 400 2.3rem Poppins;
+    color: var(--color-text-in-primary);
+}
+
+#page-login .login-form{
+    margin-top: 2rem;
+    padding: 0 2.4rem;
+}
+
+#page-login .login-form fieldset{
+    border: none;
+}
+
+#page-login .login-form fieldset legend{
+    font: 700 2.4rem Archivo;
+    color: var(--color-text-title);
+    margin-bottom: 2.4rem;
+}
+
+#page-login .login-form fieldset .border-radius-top{
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+}
+
+#page-login .login-form fieldset .border-radius-bottom{
+    border-bottom-left-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+}
+
+@media (min-width: 700px){
+    #page-login{
+        display: flex;
+        height: 100vh;
+    }
+
+    #page-login .banner,
+    #page-login .login-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #page-login .banner{
+        width: 50vw;
+    }
+
+    #page-login .login-form{
+        width: 50vw;
+    }
+
+    #page-login .login-form form{
+        width: 60%;
+    }
+
+    #page-login .banner img{
+        width: 30rem;
+    }
+
+}
