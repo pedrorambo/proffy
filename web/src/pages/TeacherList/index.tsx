@@ -22,13 +22,13 @@ function TeacherList() {
 
         const response = await api.get("classes", {
             params: {
-                subject,
-                week_day: weekDay,
-                time
+                subject: subject || "Física",
+                week_day: weekDay || "1",
+                time: time || "11:00",
             }
-        })
+        });
 
-        setTeachers(response.data)
+        setTeachers(response.data);
     }
 
     return (
