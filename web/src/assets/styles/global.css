@@ -7,7 +7,7 @@
     --color-primary-lighter: #9871F5;
     --color-primary-light: #916BEA;
     --color-primary: #8257E5;
-    --color-primray-dark: #774DD6;
+    --color-primary-dark: #774DD6;
     --color-primary-darker: #6842C2;
     --color-secondary: #04D361;
     --color-secondary-dark: #04BF58;
@@ -56,6 +56,23 @@ textarea{
 .container{
     width: 90vw;
     max-width: 700px;
+}
+
+.btn{
+    outline: none;
+    background-color: var(--color-secondary);
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+    margin: 2rem 0;
+    border:none;
+    border-radius: 0.8rem;
+    width: 100%;
+    height: 5.6rem;
+}
+
+.btn:hover{
+    background-color: var(--color-secondary);
 }
 
 @media (min-width: 700px){
